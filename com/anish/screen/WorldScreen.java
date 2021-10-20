@@ -18,23 +18,31 @@ public class WorldScreen implements Screen {
     public WorldScreen() {
         world = new World();
 
-        bros = new Calabash[7];
+        bros = new Calabash[16];
 
-        bros[3] = new Calabash(new Color(204, 0, 0), 1, world);
-        bros[5] = new Calabash(new Color(255, 165, 0), 2, world);
-        bros[1] = new Calabash(new Color(252, 233, 79), 3, world);
-        bros[0] = new Calabash(new Color(78, 154, 6), 4, world);
-        bros[4] = new Calabash(new Color(50, 175, 255), 5, world);
-        bros[6] = new Calabash(new Color(114, 159, 207), 6, world);
-        bros[2] = new Calabash(new Color(173, 127, 168), 7, world);
+        bros[3]     = new Calabash(new Color(245,   222,    179),    1,     world);
+        bros[7]     = new Calabash(new Color(244,   164,    96),     2,     world);
+        bros[0]     = new Calabash(new Color(210,   180,    140),      3,     world);
+        bros[4]     = new Calabash(new Color(210,   105,    30),      4,     world);
+        bros[10]    = new Calabash(new Color(178,   34,     34),    5,     world);
+        bros[11]    = new Calabash(new Color(173,   127,    168),    6,     world);
+        bros[12]    = new Calabash(new Color(165,   42,     42),    7,     world);
+        bros[13]    = new Calabash(new Color(233,   150,    122),    8,     world);
+        bros[1]     = new Calabash(new Color(250,   128,    114),      9,     world);
+        bros[14]    = new Calabash(new Color(255,   160,    122),    10,    world);
+        bros[15]    = new Calabash(new Color(255,   165,    0),    11,    world);
+        bros[2]     = new Calabash(new Color(255,   140,    0),      12,    world);
+        bros[8]     = new Calabash(new Color(255,   127,    80),    13,    world);
+        bros[6]     = new Calabash(new Color(240,   128,    128),    14,    world);
+        bros[5]     = new Calabash(new Color(255,   99,     71),    15,    world);
+        bros[9]     = new Calabash(new Color(255,   69,     0),    16,    world);
 
-        world.put(bros[0], 10, 10);
-        world.put(bros[1], 12, 10);
-        world.put(bros[2], 14, 10);
-        world.put(bros[3], 16, 10);
-        world.put(bros[4], 18, 10);
-        world.put(bros[5], 20, 10);
-        world.put(bros[6], 22, 10);
+        int idx = 0;
+        for(int i = 18;i<=21;++i){
+            for(int j = 3;j<=6;++j){
+                world.put(bros[idx++], i, j);
+            }
+        }
 
         BubbleSorter<Calabash> b = new BubbleSorter<>();
         b.load(bros);
@@ -49,6 +57,7 @@ public class WorldScreen implements Screen {
 
     private void execute(Calabash[] bros, String step) {
         String[] couple = step.split("<->");
+
         getBroByRank(bros, Integer.parseInt(couple[0])).swap(getBroByRank(bros, Integer.parseInt(couple[1])));
     }
 

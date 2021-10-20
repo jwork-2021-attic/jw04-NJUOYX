@@ -1,0 +1,52 @@
+@startuml gourds
+
+class Thing{
+    Tile tile;
+}
+
+class Tile<T extends Thing>{
+    T thing;
+}
+
+class World{
+    Tile<Thing>[][]tile;
+}
+
+
+class Wall extends Thing{
+
+}
+
+class Creature extends Thing{
+
+}
+
+class Floor extends Thing{
+
+}
+
+class Calabash extends Creature implements Comparable<Calabash>{
+    int rank;
+}
+
+interface Sorter<T extends Comparable<T>>{
+
+}
+
+BubbleSorter<T extends Comparable<T>> implements Sorter<T>{
+    T[]a;
+}
+
+interface Screen{
+
+}
+
+class WorldScreen implements Screen{
+    World world;
+    Calabash[]bros;
+    String[]sortSteps;
+}
+
+
+
+@enduml

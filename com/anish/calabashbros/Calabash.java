@@ -4,25 +4,28 @@ import java.awt.Color;
 
 public class Calabash extends Creature implements Comparable<Calabash> {
 
-    private int rank;
+    private int rank_x;
+    private int rank_y;
+    static private final int WIDTH = 4;
 
     public Calabash(Color color, int rank, World world) {
         super(color, (char) 2, world);
-        this.rank = rank;
+        this.rank_x = rank%WIDTH;
+        this.rank_y = rank/WIDTH;
     }
 
     public int getRank() {
-        return this.rank;
+        return this.rank_x+rank_y*WIDTH;
     }
 
     @Override
     public String toString() {
-        return String.valueOf(this.rank);
+        return String.valueOf(getRank());
     }
 
     @Override
     public int compareTo(Calabash o) {
-        return Integer.valueOf(this.rank).compareTo(Integer.valueOf(o.rank));
+        return Integer.valueOf(getRank()).compareTo(Integer.valueOf(o.getRank()));
     }
 
     public void swap(Calabash another) {
