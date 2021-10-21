@@ -5,9 +5,8 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
-import com.anish.calabashbros.World;
-import com.anish.screen.Screen;
-import com.anish.screen.WorldScreen;
+import com.maze.Screen;
+import com.maze.MazeScreen;
 
 import asciiPanel.AsciiFont;
 import asciiPanel.AsciiPanel;
@@ -19,10 +18,10 @@ public class Main extends JFrame implements KeyListener {
 
     public Main() {
         super();
-        terminal = new AsciiPanel(World.WIDTH, World.HEIGHT, AsciiFont.TALRYTH_15_15);
+        screen = new MazeScreen();
+        terminal = new AsciiPanel(screen.getWIDTH(), screen.getHEIGHT(), AsciiFont.TALRYTH_15_15);
         add(terminal);
         pack();
-        screen = new WorldScreen();
         addKeyListener(this);
         repaint();
 
