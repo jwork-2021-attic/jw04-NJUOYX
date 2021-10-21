@@ -2,19 +2,19 @@ package com.anish.calabashbros;
 
 public class BubbleSorter<T extends Comparable<T>> implements Sorter<T> {
 
-    private T[] a;
+    private Container<T> container;
 
     @Override
-    public void load(T[] a) {
-        this.a = a;
+    public void load(Container<T> container) {
+        this.container = container;
     }
 
     private void swap(int i, int j) {
         T temp;
-        temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
-        plan += "" + a[i] + "<->" + a[j] + "\n";
+        temp = container.index(i);
+        container.set(i, container.index(j));
+        container.set(j, temp);
+        plan += "" + container.index(i) + "<->" + container.index(j) + "\n";
     }
 
     private String plan = "";
@@ -24,8 +24,8 @@ public class BubbleSorter<T extends Comparable<T>> implements Sorter<T> {
         boolean sorted = false;
         while (!sorted) {
             sorted = true;
-            for (int i = 0; i < a.length - 1; i++) {
-                if (a[i].compareTo(a[i + 1]) > 0) {
+            for (int i = 0; i < container.length() - 1; i++) {
+                if (container.index(i).compareTo(container.index(i+1)) > 0) {
                     swap(i, i + 1);
                     sorted = false;
                 }
