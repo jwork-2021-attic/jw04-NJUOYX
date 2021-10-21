@@ -2,10 +2,14 @@ package com.anish.calabashbros;
 
 import java.awt.Color;
 
-public class Floor extends Thing {
+public class Floor extends Thing implements Pump{
 
     Floor(World world) {
         super(Color.gray, (char) 250, world);
     }
 
+    @Override
+    public Boolean pumpable(){
+        return true;
+    }
 }
