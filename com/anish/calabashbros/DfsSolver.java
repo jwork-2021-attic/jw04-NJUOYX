@@ -32,12 +32,12 @@ public class DfsSolver<T extends Pump> implements Solver<T> {
 
         if(!maze.isExit(status)){
             status.setFirstDirection();
-            while(status.nextDierection()){
+            do{
                 Maze.Status res =  _solve_(maze.nextStep(status));
                 if(maze.isExit(res)){
                     return res;
                 }
-            }
+            }while(status.nextDierection());
             return maze.getEntry();
         }
         else{
