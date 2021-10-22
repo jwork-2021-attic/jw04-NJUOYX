@@ -1,5 +1,4 @@
-package com.anish.calabashbros;
-
+package mazegen;
 public interface Pump {
     public Boolean pumpable();
 }

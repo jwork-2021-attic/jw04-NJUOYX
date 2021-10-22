@@ -1,5 +1,7 @@
 package com.anish.calabashbros;
 
+import mazegen.Pump;
+
 public interface Maze <T extends Pump>{
     public interface Status{
         
@@ -8,6 +10,10 @@ public interface Maze <T extends Pump>{
         public Boolean nextDierection();
 
         public Boolean oneWay();
+
+        public Boolean noWay();
+
+        public String logOut();
     }
 
     public Status getEntry();

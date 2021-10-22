@@ -27,6 +27,7 @@ public class MazeGenerator {
                 randomlyAddNodesToStack(neighbors);
             }
         }
+        System.out.println(getRawMaze());
     }
 
     public String getRawMaze() {
@@ -37,8 +38,19 @@ public class MazeGenerator {
         return sb.toString();
     }
 
-    public int[][] getIntMaze(){
-        return maze.clone();
+    public Pump[][] getMaze(){
+        Pump[][]res = new Pump[dimension][dimension];
+        for(int i = 0;i<dimension;++i){
+            for(int j = 0;j<dimension;++j){
+                if(maze[i][j] == 1){
+                    res[i][j] = new Floor();
+                }
+                else{
+                    res[i][j] = new Wall();
+                }
+            }
+        }
+        return res;
     }
 
     public String getSymbolicMaze() {

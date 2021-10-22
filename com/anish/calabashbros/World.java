@@ -1,22 +1,33 @@
 package com.anish.calabashbros;
 
+import mazegen.Pump;
+
 public class World {
 
-    public static final int WIDTH = 40;
-    public static final int HEIGHT = 40;
+    public int WIDTH;
+    public int HEIGHT;
 
-    private Tile<Thing>[][] tiles;
+    public Tile<Thing>[][] tiles;
 
-    public World() {
+    public World(Pump[][] p, int width) {
+
+        this.WIDTH = width;
+        this.HEIGHT = width;
 
         if (tiles == null) {
             tiles = new Tile[WIDTH][HEIGHT];
         }
 
+
         for (int i = 0; i < WIDTH; i++) {
             for (int j = 0; j < HEIGHT; j++) {
                 tiles[i][j] = new Tile<>(i, j);
-                tiles[i][j].setThing(new Floor(this));
+                if (p[i][j].pumpable()) {
+                    tiles[i][j].setThing(new Wall(this));
+                }
+                else{
+                    tiles[i][j].setThing(new Floor(this));
+                }
             }
         }
     }
